@@ -1,0 +1,29 @@
+{
+ "info": {"version": 1, "license": "GPL-2.0-or-later", "author": "Cyril Hrubis <metan@ucw.cz>"},
+ "layout": {
+  "type": "hbox",
+  "widgets": [
+   {"type": "frame", "title": "CPU Info", "widget":
+    {"cols": 2, "rows": 6, "rpad": "1, 5*0, 1",
+     "widgets": [
+      {"type": "label", "text": "Vendor:"},
+      {"type": "label", "text": "Architecture:"},
+      {"type": "label", "text": "Name:"},
+      {"type": "label", "text": "Processors:"},
+      {"type": "label", "text": "Cores:"},
+      {"type": "label", "text": "Temperature:"},
+      {"type": "label", "text": "Unknown", "uid": "cpu_vendor"},
+      {"type": "label", "text": "-", "uid": "cpu_uarch"},
+      {"type": "label", "text": "-", "uid": "cpu_name"},
+      {"type": "label", "text": "?", "uid": "cpu_processors"},
+      {"type": "label", "text": "?", "uid": "cpu_cores"},
+      {"type": "label", "text": "-", "uid": "cpu_temp"}
+     ]
+    }
+   },
+   {"type": "graph", "style": "line", "color": "red", "min_w": 100, "min_h": 100, "uid": "cpu_load", "align": "fill"},
+   {"type": "graph", "style": "line", "color": "blue", "min_w": 100, "min_h": 100, "uid": "cpu_temp_graph", "align": "fill"}
+  ],
+    "cell-fill": "0, 1, 1"
+ }
+}

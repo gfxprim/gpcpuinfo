@@ -1,7 +1,7 @@
 CFLAGS?=-W -Wall -Wextra -O2
 CFLAGS+=$(shell gfxprim-config --cflags)
 BIN=gpcpuinfo
-$(BIN): LDLIBS=-lgfxprim $(shell gfxprim-config --libs-widgets)
+$(BIN): LDLIBS=-lgfxprim $(shell gfxprim-config --libs-widgets) -lsysinfo
 SOURCES=$(wildcard *.c)
 DEP=$(SOURCES:.c=.dep)
 OBJ=$(SOURCES:.c=.o)

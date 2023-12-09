@@ -7,8 +7,8 @@
  */
 
 #include <gfxprim.h>
-#include "cpu_stats.h"
-#include "cpu_arch.h"
+#include <sysinfo/cpu_stats.h>
+#include <sysinfo/cpu_arch.h>
 
 static struct cpu_stats *cpu_stats;
 static gp_widget *cpu_temp;
@@ -31,16 +31,20 @@ static void update(void)
 {
 	cpu_stats_update(cpu_stats);
 
-	if (cpu_load) {
+	if (cpu_load)
 		gp_widget_graph_point_add(cpu_load, gp_time_stamp(), cpu_stats_load_perc(cpu_stats, 0));
-	}
 
-	if (cpu_temp_supported(cpu_stats)) {
+	if (cpu_stats_temp_supported(cpu_stats)) {
+		float cpu_t;
+
+		if (cpu_temp || cpu_temp_graph)
+			cpu_t = cpu_stats_temp(cpu_stats);
+
 		if (cpu_temp)
-			gp_widget_label_printf(cpu_temp, "%3.1f\u00b0C", cpu_temp_get(cpu_stats));
+			gp_widget_label_printf(cpu_temp, "%3.1f\u00b0C", cpu_t);
 
 		if (cpu_temp_graph)
-			gp_widget_graph_point_add(cpu_temp_graph, gp_time_stamp(), cpu_temp_get(cpu_stats));
+			gp_widget_graph_point_add(cpu_temp_graph, gp_time_stamp(), cpu_t);
 	}
 }
 

@@ -15,7 +15,7 @@ static gp_widget *cpu_temp;
 static gp_widget *cpu_temp_graph;
 static gp_widget *cpu_load;
 
-static gp_app_info app_info = {
+gp_app_info app_info = {
 	.name = "gpcpuinfo",
 	.desc = "CPU information",
 	.version = "1.0",
@@ -95,7 +95,6 @@ int main(int argc, char *argv[])
 {
 	gp_htable *uids;
 	gp_widget *layout = gp_app_layout_load("gpcpuinfo", &uids);
-	gp_app_info_set(&app_info);
 
 	cpu_stats = cpu_stats_create();
 
@@ -114,7 +113,7 @@ int main(int argc, char *argv[])
 	gp_htable_free(uids);
 	gp_widgets_timer_ins(&refresh_tmr);
 
-	gp_widgets_main_loop(layout, "gpcpuinfo", NULL, argc, argv);
+	gp_widgets_main_loop(layout, NULL, argc, argv);
 
 	return 0;
 }

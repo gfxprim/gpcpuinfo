@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 	gp_htable *uids;
 	gp_widget *layout = gp_app_layout_load("gpcpuinfo", &uids);
 
-	cpu_stats = cpu_stats_create();
+	cpu_stats = cpu_stats_create(NULL);
 
 	cpu_load = gp_widget_by_uid(uids, "cpu_load", GP_WIDGET_GRAPH);
 	if (cpu_stats)

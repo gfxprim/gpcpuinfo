@@ -2,6 +2,7 @@
  "info": {"version": 1, "license": "GPL-2.0-or-later", "author": "Cyril Hrubis <metan@ucw.cz>"},
  "layout": {
   "type": "hbox",
+  "align": "hfill",
   "widgets": [
    {"type": "frame", "title": "CPU Info", "widget":
     {"cols": 2, "rows": 6, "rpad": "1, 5*0, 1",
